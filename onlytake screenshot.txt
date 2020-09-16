@@ -1,0 +1,22 @@
+import pyautogui 						#python -m pip install pyautogui
+from PIL import Image, ImageGrab				#python -m pip install pillow
+import time
+from numpy import asarray					#python -m pip install numpy
+
+def takeScreenshot():
+	image= ImageGrab.grab().convert('L')			#convert colored image to greyscale(blacknwhite)
+	return image
+
+if __name__ == "__main__":
+	time.sleep(2)						#wait for 2 seconds,we can change our screen by that time
+	image= takeScreenshot()
+	data= image.load()					#allocates storage for image and loads the pixel data
+	print(asarray(image))					#print only array of pixel data
+
+#draw rectangle
+	for i in range(475, 490):				#x coordinates
+		for j in range(300, 315):			#y coordinates
+           		 data[i, j] = 0				#black rectangle
+	
+	image.show()	#it will show screenshot
+	

@@ -1,0 +1,25 @@
+import pyautogui 						#python -m pip install pyautogui
+from PIL import Image, ImageGrab				#python -m pip install pillow
+import time
+
+def hit(key):							#hit up/down arrow key function
+    pyautogui.keyDown(key)
+
+def isCollide(data):						#if "imaginary drawn rectangle"(we have not drawn) is colliding with cactus return true
+	for i in range(475, 490):
+		for j in range(300, 315):
+           		 if data[i, j] < 100:
+              		 	return True
+	return False
+
+
+if __name__ == "__main__":					#double underscore
+	print("Hey.. Dino game about to start in 2 seconds")
+	time.sleep(2) 
+	hit('up')						#after 2 sec, it will hit up key to start the game
+	while True:
+		image = ImageGrab.grab().convert('L')  		#convert colored image to greyscale(blacknwhite)
+		data = image.load()				#loaded image
+		if isCollide(data):				#if drawed rectangle is colliding with cactus then hit up arrow key
+			hit("up")
+	
