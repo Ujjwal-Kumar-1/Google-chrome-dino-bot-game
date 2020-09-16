@@ -1,0 +1,44 @@
+import pyautogui 						#python -m pip install pyautogui
+from PIL import Image, ImageGrab				#python -m pip install pillow
+import time
+
+def hit(key):							#hit up/down arrow key function
+    pyautogui.keyDown(key)
+    return
+
+def isCollide(data):						#if "imaginary drawn rectangle"(we have not drawn) is colliding with cactus/bird, return true
+	for i in range(475, 490):
+		for j in range(250, 283):
+           		 if data[i, j] < 100:
+                                hit("down")			#for bird
+                                return
+
+	for i in range(477,478):
+		for j in range(300, 323):
+           		 if data[i, j] < 100:
+                                hit("up")			#for cactus
+                                return				#here indentation problem was removed by applying multiple spaces instead of tab
+	return
+
+
+if __name__ == "__main__":
+	print("Ujjwal..game will begin after 2 seconds")
+	time.sleep(2) 
+	hit('up')						#after 2 sec, it will hit up key to start the game
+	while True:
+		image = ImageGrab.grab().convert('L')  		#convert colored image to greyscale(blacknwhite)
+		data = image.load()				
+		isCollide(data)					#if drawed rectangle is colliding with cactus then hit up arrow key
+			
+		'''
+		for i in range(440,445):			#to comment multiple statements use
+			for j in range(300, 323):
+           	       		data[i, j] =80
+
+
+		for i in range(475, 490):
+			for j in range(250, 283):
+           	       		data[i, j] =150
+		image.show()
+		break
+		'''		
