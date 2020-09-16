@@ -6,7 +6,7 @@ def hit(key):							#hit up/down arrow key function
     pyautogui.keyDown(key)
     return
 
-def isCollide(data):						#if "imaginary drawn rectangle"(we have not drawn) is colliding with cactus/bird, return true
+def isCollide(data):						#if "imaginary drawn rectangle" is colliding with cactus/bird, return true
 	for i in range(475, 490):
 		for j in range(250, 283):
            		 if data[i, j] < 100:
@@ -17,7 +17,7 @@ def isCollide(data):						#if "imaginary drawn rectangle"(we have not drawn) is 
 		for j in range(300, 323):
            		 if data[i, j] < 100:
                                 hit("up")			#for cactus
-                                return				#here indentation problem was removed by applying multiple spaces instead of tab
+                                return				
 	return
 
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
 		isCollide(data)					#if drawed rectangle is colliding with cactus then hit up arrow key
 			
 		'''
-		for i in range(440,445):			#to comment multiple statements use
+		for i in range(440,445):			#to comment multiple statements 
 			for j in range(300, 323):
            	       		data[i, j] =80
 
